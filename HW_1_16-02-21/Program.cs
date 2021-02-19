@@ -7,7 +7,7 @@ namespace HW_1_16_02_21
     {
         Random rand;
         static object locker = new object();
-        const string litters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
+        const string litters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         public int Colunm { get; set; }
         public bool NeedSecond { get; set; }
         public Matrix(int col, bool needSecond)
@@ -28,8 +28,8 @@ namespace HW_1_16_02_21
             {
                 count = rand.Next(3, 12);
                 lenght = 0;
-                Thread.Sleep(rand.Next(20, 500));
-                for (int i = 0; i < 40; i++)
+                Thread.Sleep(rand.Next(1, 5));
+                for (int i = 0; i < 42; i++)
                 {
                     lock (locker)
                     {
@@ -72,7 +72,7 @@ namespace HW_1_16_02_21
                             Console.WriteLine(GetChar());
                         }
 
-                        Thread.Sleep(5);
+                        Thread.Sleep(1);
                     }
                 }
             }
@@ -82,8 +82,8 @@ namespace HW_1_16_02_21
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize(170, 42);
-            for (int i = 0; i < 55; i++)
+            Console.SetWindowSize(150, 35);
+            for (int i = 0; i < 50; i++)
             {
                 Matrix instance = new Matrix(i * 3, true);
                 new Thread(instance.Move).Start();
